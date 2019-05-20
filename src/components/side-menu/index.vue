@@ -78,6 +78,7 @@ export default {
   'methods': {
     test () {
       console.log(554, '675');
+      alert('sfs');
     }
   }
 };
