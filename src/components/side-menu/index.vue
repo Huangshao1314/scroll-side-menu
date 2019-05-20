@@ -74,10 +74,10 @@ Vue 也可以在 unpkg 和 cdnjs 上获取 (cdnjs 的版本更新可能略滞后
 
 <script>
 export default {
-  name: 'sideMenu',
-  methods: {
-    test() {
-      console.log(554, "675");
+  'name': 'sideMenu',
+  'methods': {
+    test () {
+      console.log(554, '675');
     }
   }
 };

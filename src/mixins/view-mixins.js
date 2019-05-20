@@ -1,16 +1,17 @@
-export default function() {
+export default function () {
   // @/views/components
   return {
-    mounted() {
+    mounted () {
 
     },
-    beforeDestroy() {
+    beforeDestroy () {
 
     },
-    methods: {
-      deepClone(obj) {
+    'methods': {
+      deepClone (obj) {
         let json = JSON.stringify(obj);
-        console.log(54, "567");
+
+        console.log(54, '567');
         return JSON.parse(json);
       }
     }
