@@ -71,15 +71,16 @@ Vue 也可以在 unpkg 和 cdnjs 上获取 (cdnjs 的版本更新可能略滞后
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'sideMenu',
   methods: {
-    test(){
-      console.log(554,"675")
+    test() {
+      console.log(554, "675");
     }
   }
-}
+};
 </script>
 <style lang="postcss" scoped>
 .side-menu {
