@@ -1,5 +1,12 @@
 <template>
   <div class="side-menu">
+    <header class="navbar">
+      <ul>
+        <li><a class="active">首页</a></li>
+        <li><a>简介</a></li>
+        <li><a>登录</a></li>
+      </ul>
+    </header>
     <div class="sidebar">
       <ul class="main-root">
         <li>
@@ -8,11 +15,11 @@
         <ul class="menu-sub">
           <li><a class="section-link" href="#Vue-Devtools">Vue Devtools</a></li>
           <li>
-            <a class="section-link active" href="#直接用-lt-script-gt-引入">直接用 &lt;script&gt; 引入</a>
+            <a class="section-link" href="#直接用-lt-script-gt-引入">直接用 &lt;script&gt; 引入</a>
           </li>
         </ul>
         <li>
-          <a class="section-link active" href="#介绍">介绍</a>
+          <a class="section-link" href="#介绍">介绍</a>
         </li>
         <ul class="menu-sub">
           <li><a class="section-link" href="#vue-js-是什么">vue.js是什么</a></li>
@@ -21,6 +28,10 @@
       </ul>
     </div>
     <div class="content">
+      <h2 id="安装">
+        <a href="#安装" class="headerlink" title="安装">安装</a>
+      </h2>
+      <p style="height:0px">安装使用</p>
       <h2 id="Vue-Devtools">
         <a href="#Vue-Devtools" class="headerlink" title="Vue Devtools">Vue Devtools</a>
       </h2>
@@ -75,18 +86,41 @@ Vue 也可以在 unpkg 和 cdnjs 上获取 (cdnjs 的版本更新可能略滞后
 <script>
 export default {
   name: 'sideMenu',
+  data() {
+    return {
+      offsetArr: []
+    }
+  },
   methods: {
     test() {
       console.log(554, '675');
     }
   },
   mounted() {
-    let doms = document.querySelectorAll('.sidebar a');
-    doms.forEach((item) => {
-      item.onclick = () => {
-        window.scrollTo(0, window.scrollY - 45)
+    this.$nextTick(() => {
+      let doms = document.querySelectorAll(".content h2");
+      doms.forEach(item => {
+        this.offsetArr.push(item.offsetTop)
+      });
+    });
+    window.addEventListener('scroll', () => {
+      let scrollH = window.scrollY;
+      let index = this.offsetArr.length - 1
+      for (let i = 0;i < this.offsetArr.length;i++) {
+        if (scrollH + 10 > this.offsetArr[i]) {
+          index = i;
+          continue;
+        }
       }
-    })
+      let doms = document.querySelectorAll(".sidebar a");
+      doms.forEach((item, i) => {
+        if (i === index) {
+          item.className = "section-link active"
+        } else {
+          item.className = "section-link"
+        }
+      })
+    }, false)
   }
 };
 </script>
@@ -98,13 +132,28 @@ export default {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-inline-start: 40px;
+    padding-inline-start: 0px;
   }
   a {
     text-decoration: none;
     font-weight: 600;
     pointer-events: auto;
     color: #2c3e50;
+  }
+  .navbar{
+    height: 57px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #9E9E9E;
+    li{
+      float:left;
+      width:150px;
+    }
+    a{
+      color: #fff;
+    }
   }
   .sidebar {
     position: fixed;
@@ -114,18 +163,27 @@ export default {
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    .active{
+      color: #3eaf7c;
+    }
+    a:hover{
+      color: #3eaf7c;
+    }
   }
   .sidebar .menu-sub {
     font-size: 0.85em;
   }
   .content{
-    position: relative;
     max-width: 786px;
     margin: 0 auto;
     padding-left: 50px;
     margin-left: 358px;
     p{
-      height: 300px;
+      height: 100px;
+    }
+    h2{
+      margin-top: -10.6px;
+      padding-top: 73.6px;
     }
   }
 }
