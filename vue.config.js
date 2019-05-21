@@ -1,7 +1,7 @@
 const path = require('path')
 const resolve = dir => path.join(__dirname, dir)
 module.exports = {
-  publicPath: '/scroll-side-menu/',
+  publicPath: 'scroll-side-menu/',
   outputDir: 'dist',
   assetsDir: 'assets',
   lintOnSave: true,
