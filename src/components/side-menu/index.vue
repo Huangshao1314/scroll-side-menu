@@ -74,12 +74,19 @@ Vue 也可以在 unpkg 和 cdnjs 上获取 (cdnjs 的版本更新可能略滞后
 
 <script>
 export default {
-  'name': 'sideMenu',
-  'methods': {
-    test () {
+  name: 'sideMenu',
+  methods: {
+    test() {
       console.log(554, '675');
-      alert('sfs');
     }
+  },
+  mounted() {
+    let doms = document.querySelectorAll('.sidebar a');
+    doms.forEach((item) => {
+      item.onclick = () => {
+        window.scrollTo(0, window.scrollY - 45)
+      }
+    })
   }
 };
 </script>
@@ -117,6 +124,9 @@ export default {
     margin: 0 auto;
     padding-left: 50px;
     margin-left: 358px;
+    p{
+      height: 300px;
+    }
   }
 }
 </style>

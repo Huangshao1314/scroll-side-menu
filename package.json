@@ -19,6 +19,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "lint-staged": "^8.1.7",
+    "normalize.css": "^8.0.1",
     "postcss-advanced-variables": "^3.0.0",
     "postcss-partial-import": "^4.1.0",
     "precss": "^4.0.0",
@@ -45,17 +46,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "postcss": {
-    "plugins": {
-      "postcss-partial-import": {},
-      "precss": {},
-      "postcss-advanced-variables": {},
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+  }
 }

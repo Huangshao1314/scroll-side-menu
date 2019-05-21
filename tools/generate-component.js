@@ -1,9 +1,9 @@
-const chalk=require('chalk')
-const path=require('path')
-const fs=require('fs')
-const resolveDir=(...file)=>path.resolve(__dirname,...file)
+const chalk = require('chalk')
+const path = require('path')
+const fs = require('fs')
+const resolveDir = (...file) => path.resolve(__dirname, ...file)
 // eslint-disable-next-line no-console
-const log= message => console.log(chalk.green(`${message}`))
+const log = message => console.log(chalk.green(`${message}`))
 // eslint-disable-next-line no-console
 const successLog = message => console.log(chalk.blue(`${message}`))
 // eslint-disable-next-line no-console
@@ -11,13 +11,13 @@ const errorLog = error => console.log(chalk.red(`${error}`))
 const {componentTemplate} = require('./template.js')
 
 const generateFile = (dir, data) => {
-  if(fs.existsSync(dir)){
+  if (fs.existsSync(dir)) {
     errorLog(`${dir}文件已存在`)
     return
   }
-  return new Promise((resolve ,reject) => {
-    fs.writeFile(dir, data , 'utf8' ,err => {
-      if(err){
+  return new Promise((resolve, reject) => {
+    fs.writeFile(dir, data, 'utf8', err => {
+      if (err) {
         errorLog(err.message)
         reject(err)
       } else {
@@ -29,7 +29,7 @@ const generateFile = (dir, data) => {
 
 function mkdirs(directory, callback) {
   let exists = fs.existsSync(directory)
-  if(exists) {
+  if (exists) {
     callback()
   } else {
     mkdirs(path.dirname(directory), () => {
@@ -57,17 +57,17 @@ process.stdin.on('data', async chunk => {
   const componentVueName = resolveDir(componentDirectory, 'index.vue')
 
   const hasComponentDirectory = fs.existsSync(componentDirectory)
-  if(hasComponentDirectory) {
+  if (hasComponentDirectory) {
     errorLog(`${inputName}组件目录已存在，请重新输入`)
     return
-  } else {
-    log(`正在生成 component 目录 ${componentDirectory}`)
-    await doExistDirectoryCreate(componentDirectory)
   }
+  log(`正在生成 component 目录 ${componentDirectory}`)
+  await doExistDirectoryCreate(componentDirectory)
+
   try {
-    if(inputName.includes('/')) {
+    if (inputName.includes('/')) {
       const inputArr = inputName.split('/')
-      componentName = inputArr[inputArr.length-1]
+      componentName = inputArr[inputArr.length - 1]
     } else {
       componentName = inputName
     }
