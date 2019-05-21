@@ -2,6 +2,7 @@
   "name": "scroll-side-menu",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://huangshao1314.github.io/scroll-side-menu/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
