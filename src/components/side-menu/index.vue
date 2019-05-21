@@ -92,9 +92,6 @@ export default {
     }
   },
   methods: {
-    test() {
-      console.log(554, '675');
-    }
   },
   mounted() {
     this.$nextTick(() => {
